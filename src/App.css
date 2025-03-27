@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.snippet-form {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    background-color: inherit;
+}
+
+textarea,
+input {
+    padding: 10px;
+    resize: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td input {
+    width: 100%;
+}
+
+td textarea {
+    width: 100%;
+}
+
+td:first-child {
+    width: 20%;
+}
