@@ -12,10 +12,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
                     <Route path="/" element={<MainPage />} />
-                    <Route
-                        path="/snippets/:fileName"
-                        element={<EditSnipets />}
-                    />
+                    <Route path="/snippets/:fileName" element={<EditSnipets />} />
                 </Route>
             </Routes>
         </Router>

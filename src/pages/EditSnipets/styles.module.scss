@@ -1,0 +1,332 @@
+.page {
+    padding: 32px 0 80px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--drac-cyan);
+    font-family: var(--font-mono);
+}
+
+.titleIcon {
+    color: var(--drac-comment);
+    font-size: 14px;
+}
+
+.form {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background-color: var(--drac-bg-alt);
+    border: 1px solid var(--drac-line);
+    border-radius: var(--radius-lg);
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 160px;
+}
+
+.formFieldGrow {
+    flex: 1;
+}
+
+.fieldLabel {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--drac-comment);
+}
+
+.input,
+.textarea {
+    padding: 8px 12px;
+    background-color: var(--drac-bg);
+    border: 1px solid var(--drac-line);
+    border-radius: var(--radius-sm);
+    color: var(--drac-fg);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    resize: none;
+    transition: border-color var(--transition);
+
+    &::placeholder {
+        color: var(--drac-comment);
+        opacity: 0.6;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--drac-purple);
+    }
+}
+
+.inputError {
+    border-color: var(--drac-red) !important;
+}
+
+.errorMsg {
+    font-size: 11px;
+    color: var(--drac-red);
+}
+
+.addBtn {
+    align-self: flex-end;
+    padding: 8px 18px;
+    background-color: var(--drac-purple);
+    color: var(--drac-bg);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 13px;
+    transition: opacity var(--transition);
+    white-space: nowrap;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+.searchBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    color: var(--drac-comment);
+
+    &::before {
+        content: "";
+        display: block;
+        width: 9px;
+        height: 9px;
+        border: 1.5px solid currentColor;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        width: 1.5px;
+        height: 5px;
+        background: currentColor;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: rotate(-45deg);
+        transform-origin: bottom right;
+        border-radius: 1px;
+    }
+}
+
+.searchInput {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background-color: var(--drac-bg-alt);
+    border: 1px solid var(--drac-line);
+    border-radius: var(--radius-sm);
+    color: var(--drac-fg);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    transition: border-color var(--transition);
+
+    &::placeholder {
+        color: var(--drac-comment);
+        opacity: 0.6;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--drac-purple);
+    }
+
+    // Remove the browser-native clear button from type="search"
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+    }
+}
+
+.tableWrapper {
+    border: 1px solid var(--drac-line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--drac-comment);
+    background-color: var(--drac-bg-alt);
+    border-bottom: 1px solid var(--drac-line);
+}
+
+.thAction {
+    width: 72px;
+}
+
+.row {
+    transition: background-color var(--transition);
+
+    &:hover {
+        background-color: rgba(68, 71, 90, 0.4);
+    }
+
+    &:not(:last-child) td {
+        border-bottom: 1px solid var(--drac-line);
+    }
+}
+
+.rowEditing {
+    background-color: rgba(68, 71, 90, 0.25);
+
+    &:hover {
+        background-color: rgba(68, 71, 90, 0.25);
+    }
+}
+
+.td {
+    padding: 6px 8px;
+    vertical-align: middle;
+}
+
+.tdAction {
+    width: 72px;
+    text-align: center;
+    padding: 6px 4px;
+    white-space: nowrap;
+}
+
+.cellTrigger {
+    display: block;
+    padding: 7px 10px;
+    color: var(--drac-purple);
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.cellReplace {
+    display: block;
+    padding: 7px 10px;
+    color: var(--drac-fg);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.editBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--drac-comment);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+
+    &:hover {
+        background-color: rgba(189, 147, 249, 0.15);
+        color: var(--drac-purple);
+    }
+}
+
+.deleteBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--drac-comment);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+
+    &:hover {
+        background-color: rgba(255, 85, 85, 0.15);
+        color: var(--drac-red);
+    }
+}
+
+.confirmBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--drac-comment);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+
+    &:hover {
+        background-color: rgba(80, 250, 123, 0.15);
+        color: var(--drac-green);
+    }
+}
+
+.cancelBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--drac-comment);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+
+    &:hover {
+        background-color: rgba(255, 184, 108, 0.15);
+        color: var(--drac-orange);
+    }
+}
+
+.empty {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--drac-comment);
+    font-style: italic;
+    font-size: 13px;
+}

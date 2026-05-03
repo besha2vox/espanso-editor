@@ -1,62 +1,89 @@
-* {
+:root {
+    --drac-bg: #282a36;
+    --drac-bg-alt: #21222c;
+    --drac-surface: #343746;
+    --drac-line: #44475a;
+    --drac-fg: #f8f8f2;
+    --drac-comment: #6272a4;
+    --drac-red: #ff5555;
+    --drac-orange: #ffb86c;
+    --drac-yellow: #f1fa8c;
+    --drac-green: #50fa7b;
+    --drac-cyan: #8be9fd;
+    --drac-purple: #bd93f9;
+    --drac-pink: #ff79c6;
+
+    --font-ui: "Inter", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    --transition: 150ms ease;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    background-color: var(--drac-bg);
+    color: var(--drac-fg);
+    -webkit-font-smoothing: antialiased;
 }
 
-.snippet-form {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    gap: 20px;
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+::-webkit-scrollbar-track {
+    background: var(--drac-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--drac-line);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--drac-comment);
+}
+
+::selection {
+    background: var(--drac-line);
+    color: var(--drac-fg);
 }
 
 button {
-    padding: 0;
     cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
+    font-family: var(--font-ui);
+    font-size: 14px;
     border: none;
-    background-color: inherit;
+    background: none;
+    color: inherit;
+    padding: 0;
 }
 
-textarea,
-input {
-    padding: 10px;
-    resize: none;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-td input {
-    width: 100%;
-}
-
-td textarea {
-    width: 100%;
-}
-
-td:first-child {
-    width: 20%;
+ul {
+    list-style: none;
 }

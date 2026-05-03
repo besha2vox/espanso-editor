@@ -2,4 +2,43 @@
     display: flex;
     height: 100vh;
     overflow: hidden;
+    background-color: var(--drac-bg);
+}
+
+.main {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.loading {
+    padding: 24px;
+    color: var(--drac-comment);
+    font-style: italic;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--drac-comment);
+    border-top: 1px solid var(--drac-line);
+}
+
+.statusDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--drac-comment);
+}
+
+.running {
+    background-color: var(--drac-green);
+    box-shadow: 0 0 6px var(--drac-green);
+}
+
+.stopped {
+    background-color: var(--drac-red);
 }

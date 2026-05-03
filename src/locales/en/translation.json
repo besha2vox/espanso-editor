@@ -1,0 +1,35 @@
+{
+    "navigation": {
+        "comingSoon": "Coming soon…",
+        "home": "Home",
+        "files": "Files",
+        "addNewFile": "add new file"
+    },
+    "layout": {
+        "serviceStatus": "espanso: {{status}}",
+        "loading": "Loading…"
+    },
+    "editor": {
+        "trigger": "Trigger",
+        "triggerPlaceholder": ":trigger",
+        "replacementText": "Replacement text",
+        "replacementPlaceholder": "Expanded text…",
+        "add": "Add",
+        "searchPlaceholder": "Search triggers and replacements…",
+        "searchLabel": "Search snippets",
+        "emptyState": "No snippets yet — add one above.",
+        "noResults": "No results for «{{search}}».",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "editSnippet": "Edit snippet",
+        "deleteSnippet": "Delete snippet"
+    },
+    "home": {
+        "subtitle": "Select a file from the sidebar to start editing snippets.",
+        "description": "A visual editor for Espanso — a cross-platform text expander. Manage your snippet files without touching YAML.",
+        "feature1": "Browse all your snippet files",
+        "feature2": "Add, edit, and delete snippets",
+        "feature3": "Changes are saved automatically",
+        "feature4": "Atomic writes — no corrupt configs"
+    }
+}

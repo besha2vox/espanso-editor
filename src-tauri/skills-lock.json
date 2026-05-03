@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "deepl": {
+      "source": "membranedev/application-skills",
+      "sourceType": "github",
+      "skillPath": "skills/deepl/SKILL.md",
+      "computedHash": "520bb9290589eb811281decbc5672725147ba1717570819d72d646ddcff4e134"
+    }
+  }
+}
