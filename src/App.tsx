@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { SharedLayout } from "./shared/SharedLayout";
 import { MainPage } from "./pages/MainPage";
 import EditSnipets from "./pages/EditSnipets/EditSnipets";
+import { SettingsPage } from "./pages/SettingsPage";
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
                 <Route path="/" element={<SharedLayout />}>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/snippets/:fileName" element={<EditSnipets />} />
+                    <Route path="/settings" element={<SettingsPage />} />
                 </Route>
             </Routes>
         </Router>

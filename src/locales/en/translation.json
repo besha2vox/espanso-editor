@@ -31,5 +31,17 @@
         "feature2": "Add, edit, and delete snippets",
         "feature3": "Changes are saved automatically",
         "feature4": "Atomic writes — no corrupt configs"
+    },
+    "settings": {
+        "title": "Settings",
+        "general": "General",
+        "language": "Language",
+        "windowSize": "Window size",
+        "matchPath": "Match files location",
+        "matchPathHint": "Read-only. Browse and edit files via the sidebar.",
+        "languages": {
+            "uk": "Українська",
+            "en": "English"
+        }
     }
 }

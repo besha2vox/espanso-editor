@@ -2,12 +2,47 @@ use std::fs;
 use std::path::PathBuf;
 use std::process::Command;
 use tauri::command;
+use tauri::Manager;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 struct EspansoSnippet {
     trigger: String,
     replace: String,
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+struct AppSettings {
+    window_width: u32,
+    window_height: u32,
+    language: String,
+}
+
+impl Default for AppSettings {
+    fn default() -> Self {
+        Self {
+            window_width: 800,
+            window_height: 600,
+            language: "uk".to_string(),
+        }
+    }
+}
+
+fn settings_path() -> Option<std::path::PathBuf> {
+    dirs::config_dir().map(|d| d.join("espanso-editor").join("settings.json"))
+}
+
+fn load_settings() -> AppSettings {
+    let path = match settings_path() {
+        Some(p) => p,
+        None => return AppSettings::default(),
+    };
+    if let Ok(contents) = fs::read_to_string(&path) {
+        serde_json::from_str(&contents).unwrap_or_default()
+    } else {
+        AppSettings::default()
+    }
 }
 
 fn match_dir() -> Result<PathBuf, String> {
@@ -152,15 +187,66 @@ fn get_service_status() -> String {
     }
 }
 
+#[command]
+fn get_settings() -> AppSettings {
+    load_settings()
+}
+
+#[command]
+fn save_settings(settings: AppSettings) -> Result<(), String> {
+    let path = settings_path()
+        .ok_or_else(|| "Could not determine config directory".to_string())?;
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent)
+            .map_err(|e| format!("Failed to create config directory: {}", e))?;
+    }
+    let json = serde_json::to_string_pretty(&settings)
+        .map_err(|e| format!("Failed to serialize settings: {}", e))?;
+    fs::write(&path, json)
+        .map_err(|e| format!("Failed to write settings: {}", e))
+}
+
+#[command]
+fn apply_window_size(app: tauri::AppHandle, width: u32, height: u32) -> Result<(), String> {
+    let window = app
+        .get_webview_window("main")
+        .ok_or_else(|| "Main window not found".to_string())?;
+    window
+        .set_size(tauri::Size::Logical(tauri::LogicalSize {
+            width: width as f64,
+            height: height as f64,
+        }))
+        .map_err(|e| e.to_string())
+}
+
+#[command]
+fn get_match_dir_path() -> Result<String, String> {
+    match_dir().map(|p| p.to_string_lossy().to_string())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .setup(|app| {
+            let settings = load_settings();
+            if let Some(window) = app.get_webview_window("main") {
+                let _ = window.set_size(tauri::Size::Logical(tauri::LogicalSize {
+                    width: settings.window_width as f64,
+                    height: settings.window_height as f64,
+                }));
+            }
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![
             list_match_files,
             load_snippets,
             save_snippets,
             get_service_status,
+            get_settings,
+            save_settings,
+            apply_window_size,
+            get_match_dir_path,
         ])
         .run(tauri::generate_context!())
         .expect("failed to run app");
